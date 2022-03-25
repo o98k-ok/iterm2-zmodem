@@ -18,6 +18,10 @@ if [[ $FILE = "" ]]; then
 else
 	cd "$FILE"
 	/usr/local/bin/rz -E -e -b --bufsize 4096
+        file=$(ls -ct | head -1)
+        prefix=$(echo $file | cut -d . -f1)
+        subfix=$(echo $file | cut -d . -f2)
+        mv $file $prefix-$(date +%s).$subfix
 	sleep 1
 	echo
 	echo
